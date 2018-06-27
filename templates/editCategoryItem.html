@@ -1,0 +1,47 @@
+<!-- Udacity Full Stack Developer Project 4 - Catalog Application. -->
+<!-- Clay Haberly 4/24/2018-->
+<!-- Credit to Udacity, W3Schools, OpenStack and CSS Almanac for assistance with this project -->
+<!-- This page is returned so the logged in user can make edits to items.-->
+<!-- Links to main.html -->
+
+{% extends "main.html" %} {% block content %} {% include "header.html" %}
+<div class="row divider green">
+	<div class="col-md-12"></div>
+</div>
+<div class="row banner menu">
+	<div class="col-md-11 col-md-offset-1 padding-none">
+		<h1>Edit Category Item</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6 col-md-offset-1 padding-top">
+		<form action="#" method="post">
+			<div class="form-group">
+				<label for="name">Item Name:</label>
+				<input type="text" maxlength="100" class="form-control" name="item_name" value="{{item.item_name }}">
+
+				<label for="description">Description:</label>
+				<textarea class="form-control" maxlength="250" rows="3" name="item.description">{{item.description}}</textarea>
+
+				<label for="price">Price:</label>
+				<div class="input-group">
+					<div class="input-group-addon">$</div>
+					<input type="text" maxlength="10" class="form-control" name="item.price" value="{{item.price}}">
+				</div>
+
+				<label for="price">Season:</label>
+				<div class="input-group">
+					<input type="text" maxlength="10" class="form-control" name="item.season" value="{{item.season}}">
+				</div>
+				</br>
+				<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+				<a href='{{url_for(' showCategories ')}}'>
+					<button class="btn btn-default delete">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+				</a>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

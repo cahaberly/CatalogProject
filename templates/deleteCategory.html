@@ -1,0 +1,18 @@
+<!-- Udacity Full Stack Developer Project 4 - Catalog Application. -->
+<!-- Clay Haberly 4/24/2018-->
+<!-- Credit to Udacity, W3Schools, OpenStack and CSS Almanac for assistance with this project -->
+<!-- This page is returned before the process is completed for the logged in user.-->
+<!-- Links to main.html -->
+
+{% extends "main.html" %} {% block content %} {% include "header.html" %}
+<h2> Are you sure you want to delete {{category.category_name}}? </h2>
+
+<form action="#" method='post'>
+	<button type="submit" class="btn btn-default delete" id="submit" type="submit">
+		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>
+	<a href='{{url_for(' showCategories ')}}'>
+		<button class="btn btn-default delete">
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+	</a>
+</form>
+{% endblock %}

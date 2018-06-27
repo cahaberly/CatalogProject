@@ -1,0 +1,62 @@
+<!-- Udacity Full Stack Developer Project 4 - Catalog Application. -->
+<!-- Clay Haberly 4/24/2018-->
+<!-- Credit to Udacity, W3Schools, OpenStack and CSS Almanac for assistance with this project -->
+<!-- This page will display all of the categories without -->
+<!-- create, edit and delete options since the user is not logged in. -->
+<!-- Links to main.html -->
+
+{% extends "main.html" %} {% block content %}
+<div class="row top-menu">
+	<div class="col-md-10"></div>
+	<div class="col-md-2 text-right">
+		<a href="{{url_for('showLogin')}}">Click Here to Log in </a>
+	</div>
+</div>
+<div class="row divider blue">
+	<div class="col-md-12"></div>
+</div>
+<div class="row banner main">
+	<div class="col-md-1"></div>
+	<div class="col-md-11 padding-none">
+		<h1>Catalog Categories</h1>
+	</div>
+</div>
+
+<div class='flash'>
+	{% with messages = get_flashed_messages() %} {% if messages %}
+
+	<ul>
+		{% for message in messages %}
+		<li>
+			<strong> {{ message }} </strong>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %} {% endwith %}
+
+</div>
+
+<div class="row padding-top padding-bottom">
+	<div class="col-md-1"></div>
+	<div class="col-md-10 padding-none">
+
+	</div>
+	<div class="col-md-1"></div>
+</div>
+{% for category in categories %}
+<a href="{{url_for('showCategoryItems', category_id = category.id)}}">
+	<div class="col-md-10 category-list">
+		<div id="products" class="row list-group">
+			<div class="item  col-xs-1 col-lg-2">
+				<div class="thumbnail">
+					<img class="group list-group-image" src="{{ url_for('static', filename=category.image) }}" alt="" />
+					<div class="caption">
+						<h4 class="group inner list-group-item-heading">
+							{{category.category_name}}</h4>
+					</div>
+				</div>	
+			</div>
+		</div>
+		</div>
+	</a>
+	{% endfor %} {% endblock %}

@@ -1,0 +1,43 @@
+<!-- Udacity Full Stack Developer Project 4 - Catalog Application. -->
+<!-- Clay Haberly 4/24/2018-->
+<!-- Credit to Udacity, W3Schools, OpenStack and CSS Almanac for assistance with this project -->
+<!-- This page will display all of the category items without -->
+<!-- create, edit and delete options since the user is not logged in. -->
+<!-- Links to main.html -->
+
+{% extends "main.html" %} {% block content %} {% include "header.html" %}
+<div class="row divider green">
+	<div class="col-md-12"></div>
+</div>
+
+<div class='flash'>
+	{% with messages = get_flashed_messages() %} {% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>
+			<strong> {{ message }} </strong>
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %} {% endwith %}
+</div>
+
+{% if items !=[] %}
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-3">
+		<h2>{{ category.category_name }}: Items</h2>
+		{% for i in items %}
+		<div class="category-item">
+			<p class="item-name">{{i.item_name}}</p>
+			<p>{{i.description}}</p>
+			<p>Season: {{i.season}}</p>
+			<p>Created Date: {{i.created_date}}</p>
+			<p class="item-price">{{i.price}}</p>
+		</div>
+		</br>
+		{% endfor %}
+	</div>
+	<div class="col-md-1"></div>
+</div>
+{% endif %} {% endblock %}
